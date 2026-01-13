@@ -7,7 +7,7 @@ CREATE TABLE zones (
 );
 
 
-COPY tripdata_2025 FROM './data/taxi_zone_lookup.csv' DELIMITER ',' CSV HEADER;
+COPY zones FROM './data/taxi_zone_lookup.csv' DELIMITER ',' CSV HEADER;
 
 
 -- Q3
