@@ -1,4 +1,16 @@
-#Q3
+-- CREATE TABLE AND READ CSV FILE
+CREATE TABLE zones (
+    "LocationID" INT PRIMARY KEY,
+    "Borough" VARCHAR(50),
+    "Zone" VARCHAR(80),
+    "service_zone" VARCHAR(80)
+);
+
+
+COPY tripdata_2025 FROM './data/taxi_zone_lookup.csv' DELIMITER ',' CSV HEADER;
+
+
+-- Q3
 
 SELECT 
 	COUNT("VendorID") AS Trips
@@ -6,7 +18,7 @@ FROM tripdata_2025
 WHERE TO_CHAR(lpep_pickup_datetime, 'YYYY-MM') = '2025-11'
 	AND trip_distance <= 1.00;
 
-#Q4
+-- Q4
 
 SELECT 
     lpep_pickup_datetime
@@ -17,7 +29,7 @@ WHERE trip_distance::double precision = (
     WHERE trip_distance::double precision < 100
 );
 
-#Q5
+-- Q5
 
 SELECT
 	zones.zone AS zone,
@@ -29,7 +41,7 @@ GROUP BY 1
 ORDER BY qntd DESC
 LIMIT 1;
 
-#Q6
+-- Q6
 
 SELECT 
     z_dropoff."zone" AS dropoff_zone,
